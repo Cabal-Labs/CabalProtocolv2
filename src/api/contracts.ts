@@ -1,12 +1,12 @@
 import { ethers, Signer } from "ethers";
-import treasuryABI from "../ABIs/treasury.json";
 function Contracts(signer: Signer) {
 	const treasuryAddress = "0x000000000000000000000000000000";
-	const Treasury = new ethers.Contract(treasuryAddress, treasuryABI, signer);
+	// const Treasury = new ethers.Contract(treasuryAddress, , signer);
 
-	return {
-		Treasury,
-	};
+	return {};
 }
+// async function CreateTransaction({ amount, destination, walletClient }) {
+// 	const treasuryAddress = "0x00";
+// }
 
 export { Contracts };

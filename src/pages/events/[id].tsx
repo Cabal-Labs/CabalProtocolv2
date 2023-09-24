@@ -5,20 +5,49 @@ import ApplicationForm from "../../components/applicationForm";
 import { PiCheckCircleBold, PiClockCountdownFill } from "react-icons/pi";
 import ExpenseCard from "../../components/expenseCard";
 import { useRouter } from "next/router";
-import { Key } from "react";
+import { Key, useState } from "react";
 import UploadReceipt from "@/components/modals/uploadReceipt";
 import RewardReimbursementSwap from "@/components/rewardReimbursementSwap";
+import TokenGate from "@/components/tokenGate";
+import { UNLOCK_LOCK_ADDRESS, UNLOCK_NETWORK } from "..";
+import Header from "@/components/header";
 
 export default function EventPage() {
 	// get id from next.js router
-	const { id } = useRouter().query;
+	const router = useRouter();
+	const { id: _id } = router.query;
+	// @ts-expect-error
+	const id: string = _id;
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	// @ts-expect-error
 	let eventData = data[id];
+	const eventPaywallConfig = {
+		locks: {
+			[eventData.EVENT_LOCK_ADDRESS]: {
+				network: UNLOCK_NETWORK,
+			},
+		},
+		skipRecipient: true,
+		title: `Join ${eventData.title}`,
+		pessimistic: true,
+	};
 
 	function handleSubmitReceipt() {
 		onOpen();
+	}
+	const [tabIndex, setTabIndex] = useState(0);
+
+	const handleTabChange = (index: number) => {
+		setTabIndex(index);
+	};
+
+	const manuallySetTab = (index: number) => {
+		console.log("here");
+		setTabIndex(index);
+	};
+	function handleSubmitForm() {
+		manuallySetTab(1);
 	}
 	if (!eventData) {
 		return (
@@ -29,9 +58,14 @@ export default function EventPage() {
 	} else {
 		return (
 			<div className="overflow-y-auto page">
+				<Header title={"Event"} />
 				<UploadReceipt isOpen={isOpen} onClose={onClose} />
 				<div className="w-full h-full overflow-y-scroll">
-					<Tabs variant="solid-rounded" colorScheme="blue">
+					<Tabs
+						variant="solid-rounded"
+						colorScheme="blue"
+						index={tabIndex}
+						onChange={handleTabChange}>
 						<div
 							className="flex flex-col justify-start w-full align-start"
 							id={`event-${id}`}>
@@ -51,8 +85,7 @@ export default function EventPage() {
 							<TabPanel>
 								<div className="flex flex-col items-center justify-center w-full gap-4">
 									<Text textStyle="title">Application Form</Text>
-									{/* @ts-expect-error */}
-									<ApplicationForm id={id} />
+									<ApplicationForm id={id} handleSubmit={handleSubmitForm} />
 								</div>
 							</TabPanel>
 							<TabPanel>
@@ -62,20 +95,40 @@ export default function EventPage() {
 										size={120}
 										className={"text-green-200"}
 									/>
+									<Text
+										textStyle={"subTitle"}
+										textAlign="center"
+										className="mt-12 mb-4">
+										The Cabal Labs Core team is reviewing applications
+									</Text>
+									<Button
+										bg={"yellow.900"}
+										size={"lg"}
+										textColor={"whiteAlpha.800"}
+										className="max-w-md"
+										onClick={() => manuallySetTab(2)}>
+										Continue Waiting
+									</Button>
 								</div>{" "}
 							</TabPanel>
 							<TabPanel>
 								<div className="flex flex-col items-center justify-center w-full gap-4">
 									<Text textStyle="title">Application Accepted</Text>
 									<PiCheckCircleBold size={120} className={"text-green-200"} />
-									<Button
-										onClick={() => handleSubmitReceipt()}
-										bg={"green.900"}
-										size={"lg"}
-										textColor={"whiteAlpha.800"}
-										className="max-w-md mt-12">
-										Confirm Your Spot and Mint a Cabal NFT!
-									</Button>
+									<TokenGate
+										functionName="balanceOf"
+										lockAddress={eventData.EVENT_LOCK_ADDRESS}
+										buyButtonText="Confirm Your Spot and Mint a Cabal NFT!"
+										config={eventPaywallConfig}>
+										<Button
+											onClick={() => manuallySetTab(3)}
+											bg={"green.900"}
+											size={"lg"}
+											textColor={"whiteAlpha.800"}
+											className="max-w-md mt-12">
+											Continue to the Expense Dashboard
+										</Button>
+									</TokenGate>
 								</div>
 							</TabPanel>
 							<TabPanel>
@@ -92,6 +145,7 @@ export default function EventPage() {
 											Submit a travel expense
 										</Button>
 									</div>
+									{/* token gate ==== for admins only  */}
 									{expenseData.map((expense) => {
 										return (
 											<div key={id as Key} className="w-full">
@@ -99,6 +153,7 @@ export default function EventPage() {
 											</div>
 										);
 									})}
+									{/* end token gate */}
 								</div>
 							</TabPanel>
 							<TabPanel>

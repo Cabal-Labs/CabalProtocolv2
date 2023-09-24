@@ -9,6 +9,7 @@ export interface IEvent {
 	url: string;
 	location?: string;
 	recommended_airport?: string;
+	EVENT_LOCK_ADDRESS?: string;
 	expenses?: IExpense[];
 }
 export interface IExpense {
@@ -40,12 +41,13 @@ export const expenseData: IExpense[] = [
 export const data: IEvent[] = [
 	{
 		id: 1,
-		title: "ETH  NYC 2023",
+		title: "ETH INDIA 2023",
 		startDate: "2023-11-11",
 		endDate: "2023-11-11",
 		url: "https://ethglobal.com/ETHNYC",
-		location: "New York City",
-		recommended_airport: "JFK",
+		location: "Mumbia, India",
+		recommended_airport: "MBA",
+		EVENT_LOCK_ADDRESS: "0xf7ec60239d48dfde97df8c67b8d1781c64d91ad2",
 	},
 	{
 		id: 1,
@@ -53,6 +55,7 @@ export const data: IEvent[] = [
 		startDate: "2023-11-11",
 		endDate: "2023-11-11",
 		url: "https://ethglobal.com/ETHNYC",
+		EVENT_LOCK_ADDRESS: "0xf7ec60239d48dfde97df8c67b8d1781c64d91ad2",
 	},
 ];
 // const fetchPosts = async () => {
