@@ -10,5 +10,7 @@ The system allows for cyclic subsidised hackathons for Cabal Labs members. Our g
 
 The Smart Contract Implementation is on the following repository: https://github.com/Cabal-Labs/CabalProtocolContracts
 
+SAFE Protocol Wallet: https://app.safe.global/home?safe=gor:0x2bD5f296448c32825186841e457B361fd2D0f93b
+
 REPO for our contracts: https://github.com/Cabal-Labs/CabalProtocolContracts
 REPO for our first version of the client - had to abandon: https://github.com/Cabal-Labs/CabalProtocolClient

@@ -7,19 +7,16 @@ import { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
 import dotenv from "dotenv";
 import { ethers, Signer } from "ethers";
 function Contracts(signer: Signer) {
-<<<<<<< HEAD
   const treasuryAddress = "0x000000000000000000000000000000";
   const Treasury = new ethers.Contract(treasuryAddress, treasuryABI, signer);
 
   return {
     Treasury,
   };
-=======
-	const treasuryAddress = "0x000000000000000000000000000000";
-	// const Treasury = new ethers.Contract(treasuryAddress, , signer);
+  const treasuryAddress = "0x000000000000000000000000000000";
+  // const Treasury = new ethers.Contract(treasuryAddress, , signer);
 
-	return {};
->>>>>>> refs/remotes/origin/main
+  return {};
 }
 // async function CreateTransaction({ amount, destination, walletClient }) {
 // 	const treasuryAddress = "0x00";
