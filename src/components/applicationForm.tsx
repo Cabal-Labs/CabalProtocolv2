@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Box, Button, Checkbox, Input, Text, Textarea } from "@chakra-ui/react";
 import { data } from "../pages/events";
 interface IApplicationForm {
@@ -9,7 +10,7 @@ export default function ApplicationForm({ id }: IApplicationForm) {
 			<form>
 				<div className="flex flex-col gap-6 lg:flex-row flex-nowrap lg:flex-wrap">
 					<Box
-						bg={"green.200"}
+						bg={"green.400"}
 						className="flex-1 w-full p-6 rounded-md x lg:w-128">
 						<label htmlFor="name" className="text-blue-950">
 							Name
@@ -48,7 +49,7 @@ export default function ApplicationForm({ id }: IApplicationForm) {
 						/>
 					</Box>
 					<div className="flex flex-col flex-1 w-full gap-6 lg:w-128">
-						<Box bg={"green.200"} className="p-6 rounded-md">
+						<Box bg={"green.400"} className="p-6 rounded-md">
 							<div className="flex flex-row gap-3">
 								<div>
 									<label htmlFor="departure_airport" className="text-blue-950">

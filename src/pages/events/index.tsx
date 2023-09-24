@@ -79,10 +79,10 @@ export default function EventsPage() {
 	// 	);
 	return (
 		<div className="page">
+			<Header title={"Cabal Protocol"} />
 			<div
 				id="event-container"
 				className="flex flex-col justify-start w-full h-full p-12 align-start w-max-2xl">
-				<Header title={"Cabal Protocol"} />
 				<Text textStyle={"title"} className="pb-8">
 					Upcoming Events
 				</Text>

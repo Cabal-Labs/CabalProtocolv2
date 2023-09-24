@@ -1,4 +1,4 @@
-import { Badge, Text } from "@chakra-ui/react";
+import { Badge, Button, Stack, Text } from "@chakra-ui/react";
 import { IExpense } from "../pages/events";
 
 export default function ExpenseCard({
@@ -28,7 +28,7 @@ export default function ExpenseCard({
 			<div className="flex flex-row items-start justify-between w-full">
 				<div id="expense-content">
 					<Text textStyle={"subTitle"} fontWeight={"bold"}>
-						{amount} {title}
+						${amount} for {title}
 					</Text>
 					<div className="flex flex-row items-center justify-start gap-2">
 						<Text textStyle={"label"} fontWeight={"light"}>
@@ -40,11 +40,23 @@ export default function ExpenseCard({
 						<Text textStyle={"label"} fontWeight={"light"}>
 							{date}
 						</Text>
+						<Text textStyle={"label"} fontWeight={"light"}>
+							|
+						</Text>
+						<Text textStyle={"label"} fontWeight={"light"}>
+							View Receipt
+						</Text>
 					</div>
 				</div>
-				<Badge variant={"solid"} colorScheme={badgeColorScheme(status)}>
-					{status}
-				</Badge>
+				<div className="flex flex-col items-end gap-3">
+					<Badge variant={"solid"} colorScheme={badgeColorScheme(status)}>
+						{status}
+					</Badge>
+					<Stack direction={"row"} spacing={4}>
+						<Button colorScheme="green">Approve</Button>
+						<Button colorScheme="red">Reject</Button>
+					</Stack>
+				</div>
 			</div>
 		</div>
 	);

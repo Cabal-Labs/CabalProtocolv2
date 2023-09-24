@@ -8,7 +8,13 @@ import {
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { arbitrum, mainnet, polygon, polygonMumbai } from "wagmi/chains";
+import {
+	arbitrum,
+	goerli,
+	mainnet,
+	polygon,
+	polygonMumbai,
+} from "wagmi/chains";
 import { ChakraBaseProvider } from "@chakra-ui/react";
 import theme from "@/styles/chakraTheme";
 import Header from "@/components/header";
@@ -18,7 +24,7 @@ const projectId = "ce12f5ff9702f308e5d504f80dcd7162";
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({
-	autoConnect: true,
+	autoConnect: false,
 	connectors: w3mConnectors({ projectId, chains }),
 	publicClient,
 });
@@ -26,13 +32,13 @@ const ethereumClient = new EthereumClient(wagmiConfig, chains);
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<div id="app">
-			<ChakraBaseProvider theme={theme}>
-				<WagmiConfig config={wagmiConfig}>
+			<WagmiConfig config={wagmiConfig}>
+				<ChakraBaseProvider theme={theme}>
 					<>
 						<Component {...pageProps} />
 					</>
-				</WagmiConfig>
-			</ChakraBaseProvider>
+				</ChakraBaseProvider>
+			</WagmiConfig>
 			<Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
 		</div>
 	);
