@@ -3,8 +3,12 @@ import { Box, Button, Checkbox, Input, Text, Textarea } from "@chakra-ui/react";
 import { data } from "../pages/events";
 interface IApplicationForm {
 	id: string;
+	handleSubmit: () => void;
 }
-export default function ApplicationForm({ id }: IApplicationForm) {
+export default function ApplicationForm({
+	id,
+	handleSubmit,
+}: IApplicationForm) {
 	return (
 		<div className="page">
 			<form>
@@ -49,7 +53,7 @@ export default function ApplicationForm({ id }: IApplicationForm) {
 						/>
 					</Box>
 					<div className="flex flex-col flex-1 w-full gap-6 lg:w-128">
-						<Box bg={"green.400"} className="p-6 rounded-md">
+						{/* <Box bg={"green.400"} className="p-6 rounded-md">
 							<div className="flex flex-row gap-3">
 								<div>
 									<label htmlFor="departure_airport" className="text-blue-950">
@@ -98,7 +102,7 @@ export default function ApplicationForm({ id }: IApplicationForm) {
 									Departure Date: {data[0].startDate}
 								</Text>
 							</div>
-						</Box>
+						</Box> */}
 						<div className="flex flex-col gap-2 ">
 							<Checkbox
 								outlineColor={"blue.800"}
@@ -127,7 +131,7 @@ export default function ApplicationForm({ id }: IApplicationForm) {
 								hackathon
 							</Checkbox>
 						</div>
-						<Button>Apply</Button>
+						<Button onClick={() => handleSubmit()}>Apply</Button>
 					</div>
 				</div>
 			</form>

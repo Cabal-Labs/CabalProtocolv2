@@ -15,7 +15,7 @@ export default function Header({ title }: HeaderProps) {
 				}>
 				<div className="flex flex-row items-center justify-start">
 					<Link href={"/"} className="p-4">
-						<Image src={logo} alt={"logo"} width={24} height={24} />
+						<Image src={logo} alt={"logo"} width={30} height={30} />
 					</Link>
 					<Text textStyle={"subTitle"} color={"green.200"}>
 						{title}

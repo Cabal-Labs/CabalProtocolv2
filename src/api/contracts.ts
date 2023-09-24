@@ -6,15 +6,24 @@ import { SafeAccountConfig } from "@safe-global/protocol-kit";
 import { SafeTransactionDataPartial } from "@safe-global/safe-core-sdk-types";
 import dotenv from "dotenv";
 import { ethers, Signer } from "ethers";
-import treasuryABI from "../ABIs/treasury.json";
 function Contracts(signer: Signer) {
+<<<<<<< HEAD
   const treasuryAddress = "0x000000000000000000000000000000";
   const Treasury = new ethers.Contract(treasuryAddress, treasuryABI, signer);
 
   return {
     Treasury,
   };
+=======
+	const treasuryAddress = "0x000000000000000000000000000000";
+	// const Treasury = new ethers.Contract(treasuryAddress, , signer);
+
+	return {};
+>>>>>>> refs/remotes/origin/main
 }
+// async function CreateTransaction({ amount, destination, walletClient }) {
+// 	const treasuryAddress = "0x00";
+// }
 
 const safeAddress = 0x2bd5f296448c32825186841e457b361fd2d0f93b;
 const smart_contract = 0x2bd5f296448c3282518684;

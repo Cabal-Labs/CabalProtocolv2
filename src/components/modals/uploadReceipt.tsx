@@ -10,7 +10,9 @@ import {
 	Box,
 	Input,
 } from "@chakra-ui/react";
+import { useWalletClient } from "wagmi";
 import { useState } from "react";
+import { CreateTransaction } from "@/api/contracts";
 
 type UploadReceiptProps = {
 	isOpen: boolean;
@@ -19,6 +21,8 @@ type UploadReceiptProps = {
 
 export default function UploadReceipt({ isOpen, onClose }: UploadReceiptProps) {
 	const [file, setFile] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const { data: walletClient } = useWalletClient();
 	const handleFileChange = (e) => {
 		const selectedFile = e.target.files[0];
 		const fileType = selectedFile.name.split(".").pop();
@@ -73,7 +77,20 @@ export default function UploadReceipt({ isOpen, onClose }: UploadReceiptProps) {
 					</Box>
 				</ModalBody>
 				<ModalFooter>
-					<Button colorScheme="green" onClick={onClose} className="w-full">
+					<Button
+						colorScheme="green"
+						onClick={async () => {
+							setLoading(true);
+							await CreateTransaction({
+								receipt,
+								amount: 0,
+								recipient: "0x00",
+								walletClient,
+							});
+							setLoading(false);
+							onClose();
+						}}
+						className="w-full">
 						Submit
 					</Button>
 				</ModalFooter>

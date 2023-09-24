@@ -8,6 +8,7 @@ Once the transaction is confirmed by the Safe threshold or more, the transaction
 
 The system allows for cyclic subsidised hackathons for Cabal Labs members. Our goal is to extend beyond global hackathons to hosting sponsored destination hacker houses for hackers to find potential co-founders, VCs, and become more applicable for tech jobs.
 
-The Smart Contract Implementation is on the following repository.
+The Smart Contract Implementation is on the following repository: https://github.com/Cabal-Labs/CabalProtocolContracts
 
-https://github.com/Cabal-Labs/CabalProtocolContracts
+REPO for our contracts: https://github.com/Cabal-Labs/CabalProtocolContracts
+REPO for our first version of the client - had to abandon: https://github.com/Cabal-Labs/CabalProtocolClient
