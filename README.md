@@ -1,40 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cabal Protocol
 
-## Getting Started
+Cabal Labs is an organization of individuals who thrive in the tech industry and LOVE to hack! Our goal with the Cabal Protocol is to give any hacker the chance to hack at a destination hackathon at a Cabal Hacker House. Cabal Labs provides housing and subsidies towards trip expenses. The Cabal Protocol creates a secure treasury governance and member subsidising system by using SAFE, Unlock, and Smart Contracts.
 
-First, run the development server:
+When a Verified Cabal Member (Unlock Credential NFT) is accepted to go on a trip, they mint a TRIP TICKET NFT that gives them access to a trip portal. They can then submit an expense report (flight tickets, trip expenses) which triggers the creation and proposal of a Safe transaction. The admins of the Safe Treasury can then confirm or deny the transaction that subsidizes the hacker for their expenses. The subsidies given to the hacker are calculated by their membership tier, available trip liquidity, and API's like Skyscanner for flight cost estimation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Once the transaction is confirmed by the Safe threshold or more, the transaction can be executed. Upon execution, the subsidies will be sent to an escrow smart contract that will release the funds once the hacker sends at least 95% of their hackathon winnings to the escrow account. If hackathon rewards are greater than hackathon costs, the difference is split between hackers and the Cabal Treasury to fund future hackathons.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The system allows for cyclic subsidised hackathons for Cabal Labs members. Our goal is to extend beyond global hackathons to hosting sponsored destination hacker houses for hackers to find potential co-founders, VCs, and become more applicable for tech jobs.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+The Smart Contract Implementation is on the following repository.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://github.com/Cabal-Labs/CabalProtocolContracts
